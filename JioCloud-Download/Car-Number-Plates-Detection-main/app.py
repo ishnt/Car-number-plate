@@ -6,15 +6,13 @@ harcascade = "E:\\Car number plate\\JioCloud-Download\\Car-Number-Plates-Detecti
 
 # Accessing the webcam (index 0) using VideoCapture
 cap = cv2.VideoCapture(0)
-st.title('Number Plate Detection')
 
 # Setting the dimensions for the video stream
 # The parameters 3 and 4 correspond to CV_CAP_PROP_FRAME_WIDTH and CV_CAP_PROP_FRAME_HEIGHT, respectively.
 # suitable for webcam have a resolution of 640x480 pixels or more
 cap.set(3, 640) # width
 cap.set(4, 480) # height
-frame_placeholder=st.empty()
-stop_button_pressed=st.button("Stop")
+
 # Minimum area for a detected region to be considered a license plate
 min_area = 500
 count = 0
@@ -22,7 +20,7 @@ count = 0
 while cap.isOpened() and not stop_button_pressed :
     # Reading frames from the webcam
     success, img = cap.read()
-    img=frame_placeholder.image(img,channels="")
+    
     # Creating a license plate classifier
     plate_cascade = cv2.CascadeClassifier(harcascade)
     
